@@ -1,4 +1,3 @@
-// components/SudokuGame.tsx
 import React, { useState, useEffect } from 'react';
 import { generateSudoku } from '../utils/sudokuGenerator';
 import type { SudokuData, CellPosition } from '../types/sudoku';
@@ -8,6 +7,7 @@ import { NumberButton, ControlButton } from './SudokuControls';
 const SudokuGame = () => {
   const [sudoku, setSudoku] = useState<SudokuData | null>(null);
   const [userGrid, setUserGrid] = useState<number[][] | null>(null);
+  const [initialGrid, setInitialGrid] = useState<number[][] | null>(null);
   const [selectedCell, setSelectedCell] = useState<CellPosition | null>(null);
   const [message, setMessage] = useState<string>('');
   const [isOriginalCell, setIsOriginalCell] = useState<boolean[][]>([]);
@@ -20,8 +20,17 @@ const SudokuGame = () => {
   const startNewGame = (difficulty: 'easy' | 'medium' | 'hard' | 'expert') => {
     const { grid, solution } = generateSudoku(difficulty);
     setSudoku({ grid, solution });
+    setInitialGrid(grid.map((row) => [...row]));
     setUserGrid(grid.map((row) => [...row]));
     setIsOriginalCell(grid.map(row => row.map(cell => cell !== 0)));
+    setMessage('');
+    setSelectedCell(null);
+    setHighlightedNumber(null);
+  };
+
+  const resetGame = () => {
+    if (!initialGrid) return;
+    setUserGrid(initialGrid.map((row) => [...row]));
     setMessage('');
     setSelectedCell(null);
     setHighlightedNumber(null);
@@ -33,7 +42,6 @@ const SudokuGame = () => {
     setSelectedCell({ row, col });
     setMessage('');
     
-    // Always highlight the number when clicking a cell with a number
     const clickedNumber = userGrid[row][col];
     setHighlightedNumber(clickedNumber !== 0 ? clickedNumber : null);
   };
@@ -116,11 +124,18 @@ const SudokuGame = () => {
         ))}
       </div>
 
-      <ControlButton
-        label="Check Solution"
-        onClick={validateSudoku}
-        variant="primary"
-      />
+      <div className="flex gap-4">
+        <ControlButton
+          label="Check Solution"
+          onClick={validateSudoku}
+          variant="primary"
+        />
+        <ControlButton
+          label="Reset Game"
+          onClick={resetGame}
+          variant="secondary"
+        />
+      </div>
 
       {message && (
         <p className={`mt-4 text-lg font-medium ${
