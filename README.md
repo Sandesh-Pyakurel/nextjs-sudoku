@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sudoku Game
+
+## Description
+A Sudoku game built with Next.js and TailwindCSS. The game generates Sudoku puzzles of varying difficulties (easy, medium, hard, expert) and allows users to interactively fill in the grid. The game validates the user’s solution and provides feedback on correctness. This project uses TailwindCSS for styling and is built to be simple and user-friendly.
+
+## Table of Contents
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Technologies](#technologies)
+- [License](#license)
+
+## Features
+
+- **Responsive Design:** Fully responsive layout that works seamlessly across all devices.
+- **Interactive Grid:** Clickable Sudoku cells to input numbers (1-9).
+- **Puzzle Generation:** Random Sudoku puzzles generated for different difficulty levels (easy, medium, hard, expert).
+- **Validation:** Validate the Sudoku grid to check if the user has solved it correctly.
+- **Dynamic Difficulty:** Option to start a new game with different difficulty levels.
+- **User-Friendly Interface:** Simple UI with buttons for selecting numbers and easy-to-use grid interface.
 
 ## Getting Started
 
-First, run the development server:
+### Open Using Daytona
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Install Daytona:** Follow the 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Create the Workspace:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   daytona create https://github.com/Sandesh-Pyakurel/nextjs-sudoku
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Start the application:**
 
-## Learn More
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+### Game Features
+- **Start a new game** with your desired difficulty.
+- **Select a cell** and input a number between 1 and 9 using the number buttons.
+- **Validate your solution** to see if you solved the puzzle correctly.
+- **Responsive Design**: The game layout adapts to different screen sizes for a seamless experience across devices.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is built using the following technologies:
 
-## Deploy on Vercel
+- **Next.js:** A React framework for building server-rendered and statically generated web applications.
+- **Tailwind CSS:** A utility-first CSS framework for styling the application.
+- **TypeScript:** TypeScript is used for type safety and better development experience.
+- **Sudoku-gen:** A utility to generate Sudoku puzzles of varying difficulty.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
